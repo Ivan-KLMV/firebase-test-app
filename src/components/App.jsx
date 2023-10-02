@@ -1,16 +1,48 @@
+import { Link, Route, Routes } from 'react-router-dom';
+import { RegisterScreen } from './RegisterScreen';
+import {
+  getCurrentUser,
+  logoutDB,
+  signInWithToken,
+} from '../firebase/authUtils';
+import { LoginScreen } from './LoginScreen';
+import { auth } from '../firebase/config';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInWithCustomToken } from 'firebase/auth';
+import { useEffect } from 'react';
+import { isLoggedIn, logOutAction } from 'redux/userSlice';
+import { PostsScreen } from './PostsScreen';
+
 export const App = () => {
+  const isUserLoggedIn = useSelector(isLoggedIn);
+  const dispatch = useDispatch();
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
+    <div>
       React homework template
+      {isUserLoggedIn && (
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(logOutAction());
+            logoutDB();
+          }}
+        >
+          Log Out
+        </button>
+      )}
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/register">Registration Page</Link>
+        <Link to="/login">Login Page</Link>
+        <Link to="/postscreen">Post Screen</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/postscreen" element={<PostsScreen />} />
+      </Routes>
     </div>
   );
 };
