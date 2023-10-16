@@ -1,5 +1,5 @@
-import { auth } from '../firebase/config';
-import { registerDB, updateUserProfile } from '../firebase/authUtils';
+import { auth } from '../firebaseUtils/config';
+import { registerDB, updateUserProfile } from '../firebaseUtils/authUtils';
 import { useState } from 'react';
 
 export const RegisterScreen = () => {
