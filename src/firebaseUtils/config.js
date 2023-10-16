@@ -39,25 +39,4 @@ export const monitorAuthState = async () => {
   });
 };
 
-monitorAuthState();
-// export const monitorAuthState = () => {
-//   return new Promise((resolve, reject) => {
-//     const unsubscribe = onAuthStateChanged(auth, user => {
-//       if (user !== null) {
-//         // console.log('logged in', Boolean(user));
-//         resolve(user);
-//       } else {
-//         // console.log('no user', Boolean(user));
-//         resolve(null); // або можна використовувати reject(new Error('no user')) у випадку помилки
-//       }
-//       // Важливо відписатися від слухача після того, як ви вже отримали потрібну інформацію
-//       unsubscribe();
-//     });
-//   });
-// };
-
-// export const authStateChanged = async (onChange = () => {}) => {
-//   onAuthStateChanged(user => {
-//     onChange(user);
-//   });
-// };
+// monitorAuthState();
