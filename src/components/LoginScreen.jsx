@@ -1,5 +1,5 @@
-import { auth } from '../firebase/config';
-import { loginDB, updateUserProfile } from '../firebase/authUtils';
+import { auth } from '../firebaseUtils/config';
+import { loginDB, updateUserProfile } from '../firebaseUtils/authUtils';
 import { useState } from 'react';
 import { logInAction } from 'redux/userSlice';
 import { useDispatch } from 'react-redux';
