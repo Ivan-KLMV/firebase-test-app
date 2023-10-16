@@ -1,15 +1,8 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import { RegisterScreen } from './RegisterScreen';
-import {
-  getCurrentUser,
-  logoutDB,
-  signInWithToken,
-} from '../firebase/authUtils';
+import { logoutDB } from '../firebaseUtils/authUtils';
 import { LoginScreen } from './LoginScreen';
-import { auth } from '../firebase/config';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInWithCustomToken } from 'firebase/auth';
-import { useEffect } from 'react';
 import { isLoggedIn, logOutAction } from 'redux/userSlice';
 import { PostsScreen } from './PostsScreen';
 
