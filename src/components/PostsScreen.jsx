@@ -7,26 +7,30 @@ import {
 } from '../firebaseUtils/authUtils';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useFireStoreCloction } from 'utils/hooks/hooks';
+import { useFireStoreCloction } from 'hooks/hooks';
+import { imgConverter, resizeImage } from 'utils/imageConverter';
 
 export const PostsScreen = () => {
   const isUserLoggedIn = useSelector(isLoggedIn);
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState(null);
   const posts = useFireStoreCloction();
 
   const addPosts = async e => {
     e.preventDefault();
 
-    const filePath = await uploadFile(file, 'folder');
+    const newImg = await resizeImage(file);
+    console.log(newImg);
+
+    const filePath = await uploadFile(newImg, 'folder');
     const imagePostUrl = await getFileDownloadURL(filePath);
     writeDataToFirestore({ title, location, likes: 0, imagePostUrl });
 
     e.target[0].value = '';
     setLocation('');
     setTitle('');
-    setFile('');
+    setFile(null);
   };
 
   return (
