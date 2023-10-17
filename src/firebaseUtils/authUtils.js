@@ -7,13 +7,12 @@ import {
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import {
   collection,
-  getDocs,
   addDoc,
   onSnapshot,
   deleteDoc,
   doc,
 } from 'firebase/firestore';
-import { auth, database, db, storage } from './config';
+import { auth, db, storage } from './config';
 
 export const registerDB = async ({ email, password }) => {
   try {

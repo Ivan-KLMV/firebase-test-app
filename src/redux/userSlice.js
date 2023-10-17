@@ -1,7 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { database } from '../firebaseUtils/config';
-import { ref } from 'firebase/storage';
-import { onValue } from 'firebase/database';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { user: {}, isLoggedIn: false };
 
@@ -14,7 +11,7 @@ const userSlice = createSlice({
       state.user = action.payload.user;
       state.isLoggedIn = true;
     },
-    logOutAction(state, action) {
+    logOutAction(state) {
       state.user = {};
       state.isLoggedIn = false;
     },

@@ -8,7 +8,6 @@ import {
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useFireStoreCloction } from 'hooks/hooks';
-import { imgConverter, resizeImage } from 'utils/imageConverter';
 
 export const PostsScreen = () => {
   const isUserLoggedIn = useSelector(isLoggedIn);
@@ -20,10 +19,7 @@ export const PostsScreen = () => {
   const addPosts = async e => {
     e.preventDefault();
 
-    const newImg = await resizeImage(file);
-    console.log(newImg);
-
-    const filePath = await uploadFile(newImg, 'folder');
+    const filePath = await uploadFile(file, 'folder');
     const imagePostUrl = await getFileDownloadURL(filePath);
     writeDataToFirestore({ title, location, likes: 0, imagePostUrl });
 

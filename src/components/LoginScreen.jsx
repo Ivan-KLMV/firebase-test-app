@@ -1,10 +1,8 @@
 import { auth } from '../firebaseUtils/config';
-import { loginDB, updateUserProfile } from '../firebaseUtils/authUtils';
+import { loginDB } from '../firebaseUtils/authUtils';
 import { useState } from 'react';
 import { logInAction } from 'redux/userSlice';
 import { useDispatch } from 'react-redux';
-import { useSignUpMutation } from 'redux/userFirebaseApi';
-import { updateCurrentUser } from 'firebase/auth';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
